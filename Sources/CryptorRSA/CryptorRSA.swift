@@ -21,9 +21,9 @@
 
 import Foundation
 
-#if os(Linux)
+// #if os(Linux)
     import OpenSSL
-#endif
+// #endif
 
 // MARK: -
 
