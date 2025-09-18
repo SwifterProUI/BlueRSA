@@ -19,11 +19,11 @@
 // 	limitations under the License.
 //
 
-#if !os(Linux)
-	import CommonCrypto
-#elseif os(Linux)
+// #if !os(Linux)
+// 	import CommonCrypto
+// #elseif os(Linux)
 	import OpenSSL
-#endif
+// #endif
 
 import Foundation
 
