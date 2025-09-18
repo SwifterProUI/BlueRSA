@@ -35,7 +35,7 @@ import Foundation
 @available(macOS 10.12, iOS 10.3, watchOS 3.3, tvOS 12.0, *)
 public extension CryptorRSA {
 	
-#if os(Linux)
+// #if os(Linux)
 	
 	///
 	/// Create a key from key data.
@@ -120,38 +120,38 @@ public extension CryptorRSA {
 		return reason
 	}
 	
-#else
+// // #else
 	
-	///
-	/// Create a key from key data.
-	///
-	/// - Parameters:
-	///		- keyData:			`Data` representation of the key.
-	///		- type:				Type of key data.
-	///
-	///	- Returns:				`SecKey` representation of the key.
-	///
-	static func createKey(from keyData: Data, type: CryptorRSA.RSAKey.KeyType) throws ->  NativeKey {
-        
-		let keyClass = type == .publicType ? kSecAttrKeyClassPublic : kSecAttrKeyClassPrivate
+// 	///
+// 	/// Create a key from key data.
+// 	///
+// 	/// - Parameters:
+// 	///		- keyData:			`Data` representation of the key.
+// 	///		- type:				Type of key data.
+// 	///
+// 	///	- Returns:				`SecKey` representation of the key.
+// 	///
+// 	static func createKey(from keyData: Data, type: CryptorRSA.RSAKey.KeyType) throws ->  NativeKey {
+    
+// 		let keyClass = type == .publicType ? kSecAttrKeyClassPublic : kSecAttrKeyClassPrivate
 		
-		let sizeInBits = keyData.count * MemoryLayout<UInt8>.size
-		let keyDict: [CFString: Any] = [
-			kSecAttrKeyType: kSecAttrKeyTypeRSA,
-			kSecAttrKeyClass: keyClass,
-			kSecAttrKeySizeInBits: NSNumber(value: sizeInBits)
-		]
+// 		let sizeInBits = keyData.count * MemoryLayout<UInt8>.size
+// 		let keyDict: [CFString: Any] = [
+// 			kSecAttrKeyType: kSecAttrKeyTypeRSA,
+// 			kSecAttrKeyClass: keyClass,
+// 			kSecAttrKeySizeInBits: NSNumber(value: sizeInBits)
+// 		]
 		
-		guard let key = SecKeyCreateWithData(keyData as CFData, keyDict as CFDictionary, nil) else {
+// 		guard let key = SecKeyCreateWithData(keyData as CFData, keyDict as CFDictionary, nil) else {
 			
-			throw Error(code: ERR_ADD_KEY, reason: "Couldn't create key reference from key data")
-		}
+// 			throw Error(code: ERR_ADD_KEY, reason: "Couldn't create key reference from key data")
+// 		}
         
-		return key
+// 		return key
 		
-	}
+// 	}
 	
-#endif
+// #endif
 
 	///
 	/// Convert DER data to PEM data.
