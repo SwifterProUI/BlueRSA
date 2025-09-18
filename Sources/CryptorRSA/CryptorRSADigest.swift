@@ -18,12 +18,12 @@
 // 	limitations under the License.
 //
 
-#if !os(Linux)
-	import CommonCrypto
-#elseif os(Linux)
+// #if !os(Linux)
+// 	import CommonCrypto
+// #elseif os(Linux)
 	import OpenSSL
 	public typealias CC_LONG = size_t
-#endif
+// #endif
 
 import Foundation
 
