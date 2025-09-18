@@ -24,22 +24,22 @@ import PackageDescription
 
 var targetDependencies: [Target.Dependency] = []
 
-#if !os(Linux)
+// #if !os(Linux)
 	
     let CryptoLibUrl = "https://github.com/Kitura/CommonCrypto.git"
     let CryptoLibVersion: Package.Dependency.Requirement = .upToNextMajor(from: "1.0.200")
 	
-#elseif os(Linux)
+// #elseif os(Linux)
 	
     let CryptoLibUrl = "https://github.com/Kitura/OpenSSL.git"
     let CryptoLibVersion: Package.Dependency.Requirement = .upToNextMajor(from: "1.0.200")
     targetDependencies.append(.byName(name: "OpenSSL"))
 	
-#else
+// #else
 	
-    fatalError("Unsupported OS")
+//     fatalError("Unsupported OS")
 	
-#endif
+// #endif
 
 let package = Package(
 	name: "CryptorRSA",
